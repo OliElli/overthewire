@@ -12,7 +12,7 @@ total = 0
 # Get input from telnet:
 print ('Connecting...')
 tn = telnetlib.Telnet('vortex.labs.overthewire.org', 5842)
-time.sleep(1)
+time.sleep(4)
 output = tn.read_some()                         # Grab the data
 pp.pprint(output)
 output_bytes = output.hex()                     # Convert to hex
@@ -20,7 +20,7 @@ pp.pprint(output_bytes)
 output_list = [output_bytes[i:i+8] for i in range(0,len(output_bytes), 8)]      
                                                 # Convert hex string into a list split on bytes
 for i in output_list[:4]:                       # Iterate first 4 bytes
-    # print(int(i, 16))                           # print the decimal value of the byte
+    print(int(i, 16))                           # print the decimal value of the byte
     # print(Decimal(int(i, 16)))
     total = total + Decimal(int(i, 16))
 
